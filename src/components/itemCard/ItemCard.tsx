@@ -8,7 +8,8 @@ import { getPokemonInfo } from './ItemCard.service'
 const ItemCard = (props: ItemCardProps) => {
   const {
     onClick,
-    name = ''
+    name = '',
+    pokemon
   } = props
 
   useEffect( () => {
@@ -24,7 +25,11 @@ const ItemCard = (props: ItemCardProps) => {
       localStorage.setItem('favoriteList', JSON.stringify(favoriteList))
       setIsFavorite(true)
     }
-    getData()
+    if (pokemon) {
+      setPokeInfo(pokemon)
+    } else {
+      getData()
+    }
   }, [name])
 
   const [isFavorite, setIsFavorite] = useState(false)

@@ -3,9 +3,11 @@ import { getPokemonList } from './ItemList.service'
 import ItemCard from '../itemCard/ItemCard'
 import { PokemonItem } from './ItemList.types'
 import './ItemList.css'
+import { useNavigate } from 'react-router-dom'
 
 const ItemList = () => {
   const [offset, setOffset] = useState(0)
+  let navigate = useNavigate()
   const [pokemonList, setPokemonList] = useState<PokemonItem[]>()
 
   const handlePlageScroll = (event: any) => {
@@ -25,7 +27,7 @@ const ItemList = () => {
   }, [offset])
 
   const handleRedirection = (name: string) => {
-    console.log('redirecting...')
+    navigate(`/pokemon/${name}/detail`)
   }
 
   const renderPokemonList = () => {

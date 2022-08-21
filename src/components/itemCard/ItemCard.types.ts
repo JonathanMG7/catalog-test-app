@@ -1,6 +1,7 @@
 export type ItemCardProps = {
   onClick: (id: string) => void
-  name?: string
+  name?: string,
+  pokemon?: Pokemon
 }
 
 export type Pokemon = {

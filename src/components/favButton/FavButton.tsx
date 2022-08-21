@@ -13,8 +13,13 @@ const FavButton = (props: FavButtonProps) => {
     return isFav ? <Favorite className={`favorite-icon fav-button`} /> : <FavoriteBorder className='fav-button' />
   }
 
+  const handleClickEvent = (event: any) => {
+    event.stopPropagation();
+    onClick(id);
+  }
+
   return (
-    <div onClick={(event) => onClick(id)} className='fav-icon-container'>
+    <div onClick={handleClickEvent} className='fav-icon-container'>
       {renderIcon()}
     </div>
   )

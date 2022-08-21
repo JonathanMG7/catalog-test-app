@@ -1,0 +1,30 @@
+.card-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 80%;
+}
+
+.card-wrapper>h1 {
+  text-transform: capitalize;
+  font-size: 36px;
+  color: #ffdbdb;
+}
+
+.pokemon-card {
+  background-color: #ffd3d3;
+  border-radius: 5px;
+  display: flex;
+  padding: 10px;
+  flex-direction: row;
+}
+
+.card-info {
+  width: 200px;
+  height: 200px;
+}
+
+.pokemon-key {
+  font-weight: bold;
+}

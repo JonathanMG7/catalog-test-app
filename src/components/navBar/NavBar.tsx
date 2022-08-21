@@ -3,12 +3,18 @@ import './NavBar.css'
 import NavItem from '../naviItem/NavItem'
 import { Home, Favorite } from '@material-ui/icons'
 import { NavBarItem } from './NavBar.types'
-import { useState } from 'react'
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from 'react'
+import { useNavigate, useLocation } from "react-router-dom";
+
 
 const NavBar = () => {
   const [activeTab, setActiveTab] = useState('')
   let navigate = useNavigate()
+  const location = useLocation();
+
+  useEffect(() => {
+    setActiveTab(location.pathname)
+  }, [location])
 
   const isActive = (route: string) => {
     return route === activeTab
