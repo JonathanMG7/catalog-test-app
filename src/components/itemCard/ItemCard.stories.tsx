@@ -15,8 +15,6 @@ export const Story = Template.bind({})
 
 Story.args = {
   onClick: (id: string) => console.log(`${id} Item to redirect`),
-  imageUrl: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png",
-  id: '123',
-  name: 'Pikachu'
+  name: 'pikachu'
 }
 

@@ -1,6 +1,24 @@
 export type ItemCardProps = {
   onClick: (id: string) => void
-  imageUrl: string
-  id: string
   name?: string
+}
+
+export type Pokemon = {
+  types: PokemonType[]
+  name: string
+  id: number
+  image: string,
+  height: number,
+  moves: [{
+    move: any
+  }]
+  weight: number
+}
+
+type PokemonType = {
+  slot: number
+  type: {
+    name: string
+    url: string
+  }
 }
