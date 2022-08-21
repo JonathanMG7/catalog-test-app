@@ -1,0 +1,30 @@
+.form-container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+.login-button {
+  background-color: #314F9B;
+  border-radius: 5px;
+  border: none;
+  height: 56px;
+  font-size: 21px;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.login-button:disabled,
+.login-button[disabled] {
+  background-color: #cccccc;
+  color: #666666;
+}
+
+.login-button:active {
+  box-shadow: inset 0 0 20px 20px rgb(0 61 216 / 50%);
+}
+
+.login-image {
+  margin: auto;
+  width: 263px;
+}

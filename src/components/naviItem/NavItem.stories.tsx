@@ -16,5 +16,7 @@ export const Story = Template.bind({})
 Story.args = {
   icon: (props) => <span className={props.className} >H</span>,
   isActive: false,
-  name: 'Home'
+  name: 'Home',
+  onClick: (id) => console.log(`Redirecting to ${id}`),
+  redirectsTo: '/home'
 }

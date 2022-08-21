@@ -1,17 +1,17 @@
 import axios from 'axios'
-import { apiUrl, pageSize } from '../config/env_vars.json'
+import { envVars } from '../config/env_vars'
 
-export const httpRequest = async (path: string, method: string, paginate = false,params?: any) => {
+export const httpRequest = async (path: string, method: string, paginate = false, params?: any) => {
   let queryParams = params ? Object.keys(params).map(key => key + '=' + params[key]).join('&') : ''
 
   if (paginate) {
-    queryParams += `&limit=${pageSize}`
+    queryParams += `&limit=${envVars.pageSize}`
   }
 
 
   switch (method) {
     case 'GET':
-      return await axios.get(`${apiUrl}/${path}?${queryParams}`)
+      return await axios.get(`${envVars.apiUrl}/${path}?${queryParams}`)
         .then(res => {
           return res.data
         })

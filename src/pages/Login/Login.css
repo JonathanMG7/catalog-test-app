@@ -1,0 +1,13 @@
+.login-page {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+}
+
+.login-form-wrapper {
+  background-color: #ffd3d3;
+  border-radius: 5px;
+  padding: 20px;
+  width: 400px;
+}

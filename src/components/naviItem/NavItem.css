@@ -1,5 +1,6 @@
 .navigation-item {
   align-items: center;
+  background-color: #E8E8E8;
   flex-direction: column;
   flex-grow: 1;
   display: flex;
@@ -17,4 +18,14 @@
 
 .active {
   color: #314F9B
+}
+
+.navigation-item:hover {
+  box-shadow: 0 0 11px rgba(33, 33, 33, .2);
+  cursor: pointer;
+}
+
+.navigation-item:active {
+  box-shadow: inset 0 0 11px rgb(33 33 33 / 20%);
+  color: #F04035
 }

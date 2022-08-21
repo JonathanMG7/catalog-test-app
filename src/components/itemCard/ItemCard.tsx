@@ -18,6 +18,12 @@ const ItemCard = (props: ItemCardProps) => {
         setPokeInfo(pokemonInfo)
       }
     }
+    const favoriteList = JSON.parse(localStorage.getItem('favoriteList') || '{}')
+    if (name && favoriteList[name]) {
+      favoriteList[name] = true
+      localStorage.setItem('favoriteList', JSON.stringify(favoriteList))
+      setIsFavorite(true)
+    }
     getData()
   }, [name])
 
@@ -26,6 +32,13 @@ const ItemCard = (props: ItemCardProps) => {
 
   const handleItemFavorite = (id: string) => {
     setIsFavorite(!isFavorite)
+    const favoriteList = JSON.parse(localStorage.getItem('favoriteList') || '{}')
+    if (favoriteList[id]) {
+      delete favoriteList[id]
+    } else {
+      favoriteList[id] = true
+    }
+    localStorage.setItem('favoriteList', JSON.stringify(favoriteList))
   }
 
   return (

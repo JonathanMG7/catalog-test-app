@@ -1,0 +1,11 @@
+.template-container {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  width: 100%;
+}
+
+.template-content {
+  display: flex;
+  height: calc(100% - 60px);
+}

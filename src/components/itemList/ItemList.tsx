@@ -9,10 +9,10 @@ const ItemList = () => {
   const [pokemonList, setPokemonList] = useState<PokemonItem[]>()
 
   const handlePlageScroll = (event: any) => {
-    const bottom = event.target.scrollHeight - event.target.scrollTop === event.target.clientHeight
-    alert("end")
-    setOffset(offset + 1)
+
+    console.log(event)
   }
+
 
   useEffect(() => {
     async function getData() {
@@ -30,16 +30,16 @@ const ItemList = () => {
 
   const renderPokemonList = () => {
     return (
-      pokemonList?.map(pokemon =>
+      pokemonList?.map((pokemon, index) =>
         <div className='item-wrapper'>
-          <ItemCard name={pokemon.name} onClick={handleRedirection} />
+          <ItemCard name={pokemon.name} key={index} onClick={handleRedirection} />
         </div>
       )
     )
   }
 
   return (
-    <div className='items-grid' onScroll={handlePlageScroll}>
+    <div className='items-grid' onScroll={handlePlageScroll} >
       {renderPokemonList()}
     </div>
   )

@@ -6,7 +6,9 @@ const NavItem = (props: NavItemProps) => {
   const {
     icon,
     name,
-    isActive
+    isActive,
+    onClick,
+    redirectsTo
   } = props
 
   const [activeClass, setActiveClass] = useState('')
@@ -16,7 +18,7 @@ const NavItem = (props: NavItemProps) => {
   }, [isActive])
 
   return (
-    <div className={`navigation-item ${activeClass}`}>
+    <div className={`navigation-item ${activeClass}`} onClick={(e) => onClick(redirectsTo)}>
       {icon({ className: 'navigation-icon' })}
       {name}
     </div>
