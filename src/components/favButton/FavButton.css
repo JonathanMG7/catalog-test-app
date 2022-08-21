@@ -3,9 +3,31 @@
 }
 
 .favorite-icon {
-  color: #ffb500
+  animation-name: favorite-added;
+  animation-duration: 0.5s;
+  color: #ff004c;
+  visibility: none;
 }
 
 .fav-button:hover {
   cursor: pointer;
+}
+
+.fav-button {
+  font-size: 30px;
+}
+
+@keyframes favorite-added {
+  0% {
+    color: #000;
+  }
+
+  50% {
+    color: #ffb500;
+    visibility: visible;
+  }
+
+  100% {
+    color: #ff004c;
+  }
 }

@@ -1,0 +1,23 @@
+.card-container {
+  background: linear-gradient(-45deg, hsl(189, 100%, 64%, .5), hsl(185, 100%, 35%, .1), hsl(189, 100%, 64%, .5));
+  border-radius: 10px;
+  display: flex;
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.card-container:hover {
+  cursor: pointer;
+}
+
+.item-image {
+  height: 200px;
+  width: 200px;
+}
+
+.fav-icon-container {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
