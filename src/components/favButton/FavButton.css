@@ -1,0 +1,11 @@
+.fav-icon-container {
+  display: flex;
+}
+
+.favorite-icon {
+  color: #ffb500
+}
+
+.fav-button:hover {
+  cursor: pointer;
+}
