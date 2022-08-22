@@ -30,6 +30,7 @@ const ItemCard = (props: ItemCardProps) => {
     } else {
       getData()
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [name])
 
   const [isFavorite, setIsFavorite] = useState(false)

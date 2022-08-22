@@ -1,47 +1,76 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef, RefObject } from 'react'
 import { getPokemonList } from './ItemList.service'
 import ItemCard from '../itemCard/ItemCard'
 import { PokemonItem } from './ItemList.types'
 import './ItemList.css'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 const ItemList = () => {
   const [offset, setOffset] = useState(0)
-  let navigate = useNavigate()
+  const [lastOffset, setLastOffset] = useState<number>()
+  const [listMode, setListMode] = useState<'api' | 'fav'>('fav')
   const [pokemonList, setPokemonList] = useState<PokemonItem[]>()
+  const divInnerRef = useRef();
+  const location = useLocation();
+  let navigate = useNavigate()
 
-  const handlePlageScroll = (event: any) => {
-
-    console.log(event)
+  const handlePlageScroll = () => {
+    if (divInnerRef.current) {
+      const { scrollTop, scrollHeight, clientHeight } = divInnerRef.current;
+      console.log(scrollTop + clientHeight, scrollHeight)
+      if (scrollTop + clientHeight + 15 >= scrollHeight) {
+        setOffset(offset + 1)
+      }
+    }
   }
+
+  useEffect(() => {
+    if (location.pathname === '/favorites') {
+      setListMode('fav')
+      const favorites = JSON.parse(localStorage.getItem('favoriteList') || '[]')
+      const mappedPokemons = Object.keys(favorites).map(pokemon => {return { name: pokemon }})
+      setPokemonList(mappedPokemons)
+    } else {
+      setListMode('api')
+      getData()
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location, JSON.parse(localStorage.getItem('favoriteList') || '[]')])
 
 
   useEffect(() => {
-    async function getData() {
-      const pokeList = await getPokemonList(offset)
-      if (pokemonList && pokemonList.length) {
-        setPokemonList([...pokemonList, ...pokeList])
-      } else setPokemonList(pokeList)
+    if (listMode === 'api') {
+      getData()
     }
-    getData()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [offset])
 
   const handleRedirection = (name: string) => {
     navigate(`/pokemon/${name}/detail`)
   }
 
+  const getData = async () => {
+    if (offset !== lastOffset) {
+      const pokeList = await getPokemonList(offset)
+      setLastOffset(offset)
+      if (pokemonList && pokemonList.length) {
+        setPokemonList([...pokemonList, ...pokeList])
+      } else setPokemonList(pokeList)
+    }
+  }
+
   const renderPokemonList = () => {
     return (
       pokemonList?.map((pokemon, index) =>
         <div className='item-wrapper'>
-          <ItemCard name={pokemon.name} key={index} onClick={handleRedirection} />
+          <ItemCard name={pokemon.name} key={pokemon} onClick={handleRedirection} />
         </div>
       )
     )
   }
 
   return (
-    <div className='items-grid' onScroll={handlePlageScroll} >
+    <div className='items-grid' onScroll={handlePlageScroll} ref={divInnerRef as unknown as RefObject<HTMLDivElement>} >
       {renderPokemonList()}
     </div>
   )

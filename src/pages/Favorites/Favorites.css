@@ -1,0 +1,7 @@
+.favorites-page {
+  display: flex;
+  height: 100%;
+  padding: 30px;
+  width: 100%;
+  box-sizing: border-box;
+}
