@@ -4,6 +4,8 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+  max-width: 1168px;
+  max-height: 760px;
   row-gap: 10px;
   overflow: auto;
 }
