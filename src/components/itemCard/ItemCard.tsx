@@ -12,7 +12,7 @@ const ItemCard = (props: ItemCardProps) => {
     pokemon
   } = props
 
-  useEffect( () => {
+  useEffect(() => {
     async function getData() {
       if (name) {
         const pokemonInfo = await getPokemonInfo(name)
@@ -30,27 +30,29 @@ const ItemCard = (props: ItemCardProps) => {
     } else {
       getData()
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [name])
 
   const [isFavorite, setIsFavorite] = useState(false)
   const [pokeInfo, setPokeInfo] = useState<Pokemon>()
 
   const handleItemFavorite = (id: string) => {
+    let favoriteList: { [key: string]: any } = {}
     setIsFavorite(!isFavorite)
-    const favoriteList = JSON.parse(localStorage.getItem('favoriteList') || '{}')
+    favoriteList = JSON.parse(localStorage.getItem('favoriteList') || '{}')
     if (favoriteList[id]) {
       delete favoriteList[id]
     } else {
       favoriteList[id] = true
     }
     localStorage.setItem('favoriteList', JSON.stringify(favoriteList))
+    console.log(JSON.parse(localStorage.getItem('favoriteList') || '{}'))
   }
 
   return (
     <div className='card-container' onClick={(e) => onClick(pokeInfo?.name || '')}>
       <FavButton id={pokeInfo?.name || ''} onClick={handleItemFavorite} isFav={isFavorite} />
-      <img src={pokeInfo?.image} alt={name} className='item-image'/>
+      <img src={pokeInfo?.image} alt={name} className='item-image' />
     </div>
   )
 }
