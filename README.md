@@ -1,3 +1,4 @@
+![](https://github.com/JonathanMG7/catalog-test-app/blob/master/Animation.gif)
 # Catalog App
 
 This app is a test for the Frontend Position at 57blocks
