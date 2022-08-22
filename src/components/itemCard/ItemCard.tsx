@@ -46,7 +46,6 @@ const ItemCard = (props: ItemCardProps) => {
       favoriteList[id] = true
     }
     localStorage.setItem('favoriteList', JSON.stringify(favoriteList))
-    console.log(JSON.parse(localStorage.getItem('favoriteList') || '{}'))
   }
 
   return (
